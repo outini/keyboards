@@ -1,12 +1,9 @@
 #include "S60RGB.h"
 
-
-// Used for SHIFT_ESC
-#define MODS_CTRL_MASK  (MOD_BIT(KC_LSHIFT)|MOD_BIT(KC_RSHIFT))
-
 #define _DEFAULT_KM 0
 #define _SPACEFN_KM 1
 #define _GAME_KM 2
+
 
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  /* Keymap _DEFAULT_KM: Default Layer
