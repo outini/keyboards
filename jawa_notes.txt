@@ -1,0 +1,31 @@
+Get DFU Programmer latest release from: http://dfu-programmer.github.io/
+Debian requisites:
+    apt-get install autoconf automake libusb-1.0-0-dev avr-libc
+
+
+Get QMK firmware for S60-RGB from https://github.com/jbyoung/qmk_firmware:
+    git clone git@github.com:jbyoung/qmk_firmware.git
+
+
+Keymap as to be used with S60RGB keyboard.
+Make firmware:
+    cp -a keymaps/jawa/ qmk_firmware/keyboards/S60RGB/keymaps/
+    (cd qmk_firmware/keyboards/S60RGB && make jawa)
+
+
+Check UDEV rules from 55-sentraq-s60-rgb.rules
+Keyboard disconnect and reconnect as ATmega32U4 with reset button.
+Flash firmware:
+    dfu-programmer atmega32u4 erase
+    dfu-programmer atmega32u4 flash S60RGB_jawa.hex
+
+
+Things to look:
+    http://qmk.sized.io/
+
+
+Problem encountered:
+  - Reset switch is now working, possible solutions:
+    * Try adding more solder to the four points of the reset button.
+    * Try wiring pins 13 & 15 to force reset (check ATmega32U4 schematic).
+    * Configure a reset key combination in keymap.
